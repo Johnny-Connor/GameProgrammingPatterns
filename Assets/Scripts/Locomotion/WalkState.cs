@@ -1,4 +1,4 @@
-using UnityEngine;
+using UnityEngine; // Using for Debug.Log("");
 
 public class WalkState : ILocomotionState
 {
