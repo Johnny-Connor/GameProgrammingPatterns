@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerControls : MonoBehaviour
+public class LocomotionControls : MonoBehaviour
 {
     LocomotionStateMachine _locomotionStateMachine;
 
