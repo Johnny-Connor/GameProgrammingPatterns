@@ -2,11 +2,11 @@ public class BasePizza : IPizza
 {
     public decimal GetCost()
     {
-        throw new System.NotImplementedException();
+        return 5.00m;
     }
 
     public string GetDescription()
     {
-        throw new System.NotImplementedException();
+        return "Base Pizza";
     }
 }

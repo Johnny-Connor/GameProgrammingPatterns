@@ -1,14 +1,13 @@
-using UnityEngine; // Using for Debug.Log.
-
-public class PizzaDecorator : IPizza
+public abstract class PizzaDecorator : IPizza
 {
-    public decimal GetCost()
+    protected IPizza tempPizza;
+
+    public PizzaDecorator(IPizza newPizza)
     {
-        throw new System.NotImplementedException();
+        tempPizza = newPizza;
     }
 
-    public string GetDescription()
-    {
-        throw new System.NotImplementedException();
-    }
+    public abstract decimal GetCost();
+
+    public abstract string GetDescription();
 }

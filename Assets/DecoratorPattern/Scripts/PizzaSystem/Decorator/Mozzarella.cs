@@ -1,14 +1,19 @@
 using UnityEngine; // Using for Debug.Log.
 
-public class Mozzarella : IPizza
+public class Mozzarella : PizzaDecorator
 {
-    public decimal GetCost()
+    public Mozzarella(IPizza newPizza) : base(newPizza)
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Adding Mozzarella");
     }
 
-    public string GetDescription()
+    public override decimal GetCost()
     {
-        throw new System.NotImplementedException();
+        return tempPizza.GetCost() + 3.00m;
+    }
+
+    public override string GetDescription()
+    {
+        return tempPizza.GetDescription() + ", mozzarella";
     }
 }
