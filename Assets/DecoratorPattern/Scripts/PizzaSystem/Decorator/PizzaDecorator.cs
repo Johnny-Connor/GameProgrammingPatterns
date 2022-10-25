@@ -16,7 +16,7 @@ Q - What is the purpose of this class (Decorator) in this pattern? Wouldn't it b
 just remove it and make its children (Concrete Decorators) directly inherit from IPizza
 (Component) instead?
 A - To eliminate code duplication. Without this class, each ingredient would require the
-tempPizza variable to be declared and have its attribution operation inside their
+tempPizza object to be declared and have its attribution operation inside their
 constructors, violating the "Don't Repeat Yourself" (DRY) principle.
 */
 public abstract class PizzaDecorator : IPizza
