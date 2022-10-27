@@ -13,7 +13,7 @@ To cope with this not so logical abstraction, one can bring up the fact that the
 of an IPizza are part of an IPizza, indirectly making them an IPizza.
 
 Q - What is the purpose of this class (Decorator) in this pattern? Wouldn't it be easier to
-just remove it and make its children (Concrete Decorators) directly inherit from IPizza
+just remove it and make its children (Concrete Decorators) inherit directly from IPizza
 (Component) instead?
 A - To eliminate code duplication. Without this class, each ingredient would require the
 tempPizza object to be declared and have its attribution operation inside their
