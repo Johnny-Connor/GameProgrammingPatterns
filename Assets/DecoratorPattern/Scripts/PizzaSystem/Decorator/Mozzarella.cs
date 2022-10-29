@@ -3,8 +3,7 @@ using UnityEngine; // Using for Debug.Log.
 public class Mozzarella : PizzaDecorator
 {
     /*
-    The base keyword is used to override a functionality while still maintaining the
-    overridden functionality.
+    The base keyword is used to override a functionality while still maintaining it.
     Note: the override keyword isn't used because inherited constructors are automatically
     overridden.
     */
