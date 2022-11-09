@@ -1,15 +1,25 @@
-public class BaseAttribute
+/*
+The BaseAttribute class (Component) is a blueprint for how attributes (Composite and Leaves)
+will work.
+*/
+public abstract class BaseAttribute
 {
-    private float _baseValue;
-    private float _baseMultiplier;
+    private int _baseValue;
+    private decimal _basePercentage;
 
-    public BaseAttribute(float baseValue, float baseMultiplier)
+    public BaseAttribute(int baseValue, decimal basePercentage)
     {
         _baseValue = baseValue;
-        _baseMultiplier = baseMultiplier;
+        _basePercentage = basePercentage;
     }
 
-    public int BaseValue { get; private set; }
+    public int GetBaseValue()
+    {
+        return _baseValue;
+    }
 
-    public int BaseMultiplier { get; private set; }
+    public decimal GetBasePercentage()
+    {
+        return _basePercentage;
+    }
 }
