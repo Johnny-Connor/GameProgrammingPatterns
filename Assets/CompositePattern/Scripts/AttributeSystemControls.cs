@@ -10,22 +10,22 @@ public class AttributeSystemControls : MonoBehaviour
         {
             Debug.Log("Current ATK: " + _playerAtk.GetTotalValue());
         }
-        if (Input.GetKeyDown("Q")) // Q
+        if (Input.GetKeyDown(KeyCode.Q)) // Q
         {
             _playerAtk.AddInitialBonus(new InitialBonus(100, 0));
             Debug.Log("+100 ATK (InitialBonus).");
         }
-        if (Input.GetKeyDown("W")) // W
+        if (Input.GetKeyDown(KeyCode.W)) // W
         {
             _playerAtk.AddInitialBonus(new InitialBonus(0, 0.2m));
             Debug.Log("+20% ATK (InitialBonus).");
         }
-        if (Input.GetKeyDown("E")) // E
+        if (Input.GetKeyDown(KeyCode.E)) // E
         {
             _playerAtk.AddFinalBonus(new FinalBonus(100, 0m));
             Debug.Log("+100 ATK (FinalBonus).");
         }
-        if (Input.GetKeyDown("R")) // R
+        if (Input.GetKeyDown(KeyCode.R)) // R
         {
             _playerAtk.AddFinalBonus(new FinalBonus(0, 0.2m));
             Debug.Log("+20% ATK (FinalBonus).");
