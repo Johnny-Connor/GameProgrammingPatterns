@@ -10,11 +10,11 @@ public class LocomotionControls : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1")) // M1
+        if (Input.GetMouseButtonDown(0)) // M1
         {
             _locomotionStateMachine.Move();
         }
-        if (Input.GetButtonDown("Fire2")) // M2
+        if (Input.GetMouseButtonDown(1)) // M2
         {
             _locomotionStateMachine.Stop();
         }

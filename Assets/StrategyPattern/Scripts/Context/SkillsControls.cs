@@ -6,17 +6,17 @@ public class SkillsControls : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1")) // M1
+        if (Input.GetMouseButtonDown(0)) // M1
         {
             Debug.Log("Switched to Heal.");
             _currentSkill = new Heal();
         }
-        if (Input.GetButtonDown("Fire2")) // M2
+        if (Input.GetMouseButtonDown(1)) // M2
         {
             Debug.Log("Switched to Provoke.");
             _currentSkill = new Provoke();
         }
-        if (Input.GetButtonDown("Fire3")) // M3
+        if (Input.GetMouseButtonDown(2)) // M3
         {
             if (_currentSkill != null)
             {
