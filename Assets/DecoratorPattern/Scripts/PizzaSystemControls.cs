@@ -10,16 +10,15 @@ public class PizzaSystemControls : MonoBehaviour
         {
             _pizza = new Mozzarella(_pizza);
         }
+
         if (Input.GetMouseButtonDown(1)) // M2
         {
             _pizza = new Tomatoes(_pizza);
         }
+        
         if (Input.GetMouseButtonDown(2)) // M3
         {
-            Debug.Log(_pizza.GetCost());
-            _pizza.GetCost();
-            Debug.Log(_pizza.GetDescription());
-            _pizza.GetDescription();
+            Debug.Log("Price: $" + _pizza.GetPrice() + "." + "\n" + "Ingredients: " + _pizza.GetIngredients() + ".");
         }
     }
 }

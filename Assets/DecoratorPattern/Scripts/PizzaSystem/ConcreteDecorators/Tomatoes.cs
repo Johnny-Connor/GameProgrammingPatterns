@@ -9,22 +9,22 @@ public class Tomatoes : PizzaDecorator
     */
     public Tomatoes(IPizza newPizza) : base(newPizza)
     {
-        Debug.Log("Adding Tomatoes");
+        Debug.Log("Adding tomatoes.");
     }
 
     /*
-    Returns the GetCost/GetDescription from tempPizza and adds a value to it.
+    Returns the GetPrice/GetIngredients from tempPizza and adds a value to it.
     Reminder: tempPizza references the IPizza newPizza inserted in the constructor of
-    PizzaDecorator.cs, meaning that ultimately, in this example, tempPizza is the _pizza
+    PizzaDecorator.cs, meaning that, ultimately, in this example, tempPizza is the _pizza
     object from PizzaSystemControls.cs.
     */
-    public override decimal GetCost()
+    public override decimal GetPrice()
     {
-        return tempPizza.GetCost() + 1.50m;
+        return tempPizza.GetPrice() + 1.50m;
     }
 
-    public override string GetDescription()
+    public override string GetIngredients()
     {
-        return tempPizza.GetDescription() + ", tomatoes";
+        return tempPizza.GetIngredients() + ", tomatoes";
     }
 }

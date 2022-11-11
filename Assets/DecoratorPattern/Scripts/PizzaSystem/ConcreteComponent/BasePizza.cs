@@ -1,12 +1,12 @@
 public class BasePizza : IPizza
 {
-    public decimal GetCost()
+    public decimal GetPrice()
     {
         return 5.00m;
     }
 
-    public string GetDescription()
+    public string GetIngredients()
     {
-        return "Base Pizza";
+        return "Dough (base)";
     }
 }

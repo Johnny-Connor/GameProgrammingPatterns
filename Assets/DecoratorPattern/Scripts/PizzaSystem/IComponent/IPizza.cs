@@ -1,5 +1,5 @@
 public interface IPizza
 {
-    decimal GetCost();
-    string GetDescription();
+    decimal GetPrice();
+    string GetIngredients();
 }

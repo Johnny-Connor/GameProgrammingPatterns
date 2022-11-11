@@ -14,6 +14,7 @@ public class LocomotionControls : MonoBehaviour
         {
             _locomotionStateMachine.Move();
         }
+        
         if (Input.GetMouseButtonDown(1)) // M2
         {
             _locomotionStateMachine.Stop();

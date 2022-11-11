@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LocomotionStateMachine : MonoBehaviour, ILocomotionContext
 {
-    private ILocomotionState _currentState = new IdleState();
+    private ILocomotionState _currentState = new IdleState(); // Starting state.
 
     private void Awake() => _currentState.OnEnter();
 

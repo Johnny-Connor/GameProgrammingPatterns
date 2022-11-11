@@ -32,7 +32,7 @@ public abstract class PizzaDecorator : IPizza
         tempPizza = newPizza;
     }
 
-    public abstract decimal GetCost();
+    public abstract decimal GetPrice();
 
-    public abstract string GetDescription();
+    public abstract string GetIngredients();
 }

@@ -1,25 +1,25 @@
-using UnityEngine; // Using for Debug.Log;
+using UnityEngine; // Using for Debug.Log.
 
 public class WalkState : ILocomotionState
 {
     public void OnEnter()
     {
-        Debug.Log(this + ":Entered");        
+        Debug.Log("Entered in " + this + ".");      
     }
 
     public void OnTick()
     {
-        Debug.Log(this + ":Ticked");
+        Debug.Log("A tick from " + this + ".");
     }
 
     public void Move(ILocomotionContext context)
     {
-        Debug.Log(this + ":Moved");
+        Debug.Log("Called Move in " + this + ".");
     }
 
     public void Stop(ILocomotionContext context)
     {
-        Debug.Log(this + ":Stopped");
+        Debug.Log("Called Stop in " + this + ".");
         context.SetState(new IdleState());
     }
 }
