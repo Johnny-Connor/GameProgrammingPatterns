@@ -5,92 +5,57 @@ of any type (Generics).
 using System.Collections.Generic;
 
 /*
-The Attribute class (Composite) is a node which can group multiple bonuses (Leaves). This
-makes it possible, for example, to isolate the bonuses a buff/potion/weapon may give.
+The Attribute class (Composite) is a node which can group bonuses (Leaves) and other
+attributes. This makes it possible, for example, to manage the bonuses a buff/potion/
+weapon will have, as well as manage these same items when they are being used by another
+item.
 */
 public class Attribute : BaseAttribute
 {
-    /*
-    Usually, only one array of Component type is required to group the Leaves. However, in
-    this case, in order to make sure that the bonuses (Leaves) are aplied in the planned
-    order (in CalculateTotalValue function), there will be an array for each type of bonus.
-    */
-    private List<InitialBonus> _initialBonuses;
-    private List<FinalBonus> _finalBonuses;
+    private List<BaseAttribute> _baseAttributes;
 
-    public Attribute(int startingValue) : base(startingValue, 1)
+    public Attribute(int startingValue) : base(startingValue)
     {
-        _initialBonuses = new List<InitialBonus>();
-        _finalBonuses = new List<FinalBonus>();
+        _baseAttributes = new List<BaseAttribute>();
     }
 
-    public void AddInitialBonus(InitialBonus bonus)
+    public void AddBaseAttribute(BaseAttribute baseAttribute)
     {
-        _initialBonuses.Add(bonus);
+        _baseAttributes.Add(baseAttribute);
     }
 
-    public void RemoveInitialBonus(InitialBonus bonus)
+    public void RemoveBaseAttribute(BaseAttribute baseAttribute)
     {
-        foreach (InitialBonus i in _initialBonuses)
+        foreach (BaseAttribute i in _baseAttributes)
         {
-            if (bonus.GetBaseValue() == i.GetBaseValue() && bonus.GetBasePercentage() == i.GetBasePercentage())
+            if (baseAttribute.GetValue() == i.GetValue())
             {
-                bonus = i;
+                baseAttribute = i;
                 break;
             }
         }
 
-        _initialBonuses.Remove(bonus);
+        _baseAttributes.Remove(baseAttribute);
     }
 
-    public void AddFinalBonus(FinalBonus bonus)
+    public override int GetValue()
     {
-        _finalBonuses.Add(bonus);
-    }
-
-    public void RemoveFinalBonus(FinalBonus bonus)
-    {
-        foreach (FinalBonus i in _finalBonuses)
+        /*
+        Gathers the attributes (Composites) and bonuses (Leaves) from this attribute to
+        calculate its total value.
+        */
+        int CalculateValue()
         {
-            if (bonus.GetBaseValue() == i.GetBaseValue() && bonus.GetBasePercentage() == i.GetBasePercentage())
+            int totalValue = _value;
+
+            foreach (BaseAttribute i in _baseAttributes)
             {
-                bonus = i;
-                break;
+                totalValue += i.GetValue();
             }
+
+            return totalValue;
         }
 
-        _finalBonuses.Remove(bonus);
-    }
-
-    /*
-    Gathers the bonuses (Leaves) from this attribute (Composite) to calculate its total
-    value.
-    */
-    private decimal CalculateTotalValue()
-    {
-        int totalInitialValueBonus = 0;
-        decimal totalInitialPercentageBonus = 0;
-
-        foreach (InitialBonus bonus in _initialBonuses)
-        {
-            totalInitialValueBonus += bonus.GetBaseValue();
-            totalInitialPercentageBonus += bonus.GetBasePercentage();
-        }
-
-        int totalFinalValueBonus = 0;
-        decimal totalFinalPercentageBonus = 0;
-
-        foreach (FinalBonus bonus in _finalBonuses)
-        {
-            totalFinalValueBonus += bonus.GetBaseValue();
-            totalFinalPercentageBonus +=  bonus.GetBasePercentage();
-        }
-
-        return ( (GetBaseValue() * (1 + totalInitialPercentageBonus) + totalInitialValueBonus) * (1 + totalFinalPercentageBonus) + totalFinalValueBonus );
-    }
-
-    public decimal GetTotalValue()
-    {
-        return CalculateTotalValue();
+        return CalculateValue();
     }
 }

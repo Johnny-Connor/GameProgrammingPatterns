@@ -1,25 +1,18 @@
 /*
-The BaseAttribute class (Component) is a blueprint for how attributes (Composite and Leaves)
+The BaseAttribute class (Component) is a blueprint for how a stat (Composites and Leaves)
 will work.
 */
 public abstract class BaseAttribute
 {
-    private int _baseValue;
-    private decimal _basePercentage;
+    protected int _value;
 
-    public BaseAttribute(int baseValue, decimal basePercentage)
+    public BaseAttribute(int startingValue)
     {
-        _baseValue = baseValue;
-        _basePercentage = basePercentage;
+        _value = startingValue;
     }
 
-    public int GetBaseValue()
+    public virtual int GetValue()
     {
-        return _baseValue;
-    }
-
-    public decimal GetBasePercentage()
-    {
-        return _basePercentage;
+        return _value;
     }
 }

@@ -2,53 +2,75 @@ using UnityEngine;
 
 public class AttributeSystemControls : MonoBehaviour
 {
-    private Attribute _playerAtk = new Attribute(100);
+    // Composites.
+    private Attribute _playerAtk = new Attribute(10);
+    private Attribute _swordAtk = new Attribute(50);
+
+    // Leaves.
+    private Bonus _magicalLeafAtkBonus = new Bonus(1);
+    private Bonus _refinementAtkBonus = new Bonus(5);
+
+    private bool _isSwordEquipped;
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // M1
+        void PlayerCommands()
         {
-            Debug.Log("Current ATK: " + _playerAtk.GetTotalValue());
+            if (Input.GetMouseButtonDown(0)) // M1
+            {
+                Debug.Log("Player ATK: " + _playerAtk.GetValue() + ".");
+            }
+    
+            if (Input.GetMouseButtonDown(2)) // M3
+            {
+                if (_isSwordEquipped)
+                {
+                    _playerAtk.RemoveBaseAttribute(_swordAtk);
+                    Debug.Log("Player has unequipped Sword.");
+                }
+                else
+                {
+                    _playerAtk.AddBaseAttribute(_swordAtk);
+                    Debug.Log("Player has equipped Sword.");
+                }
+
+                _isSwordEquipped = !_isSwordEquipped;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q)) // Q
+            {
+                _playerAtk.AddBaseAttribute(_magicalLeafAtkBonus);
+                Debug.Log("Player found a magical leaf (+1 ATK).");
+            }
+
+            if (Input.GetKeyDown(KeyCode.W)) // W
+            {
+                _playerAtk.RemoveBaseAttribute(_magicalLeafAtkBonus);
+                Debug.Log("Player lost a magical leaf (-1 ATK), if he had any.");
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Q)) // Q
+
+        void SwordCommands()
         {
-            _playerAtk.AddInitialBonus(new InitialBonus(100, 0));
-            Debug.Log("+100 ATK (InitialBonus).");
+            if (Input.GetMouseButtonDown(1)) // M2
+            {
+                Debug.Log("Sword Attack: " + _swordAtk.GetValue() + ".");
+            }
+
+            if (Input.GetKeyDown(KeyCode.E)) // E
+            {
+                _swordAtk.AddBaseAttribute(_refinementAtkBonus);
+                Debug.Log("Sword gained a refinement bonus (+5 ATK).");
+            }
+
+            if (Input.GetKeyDown(KeyCode.R)) // R
+            {
+                _swordAtk.RemoveBaseAttribute(_refinementAtkBonus);
+                Debug.Log("Sword lost a refinement bonus (-5 ATK), if it had any.");
+            }
         }
-        if (Input.GetKeyDown(KeyCode.W)) // W
-        {
-            _playerAtk.AddInitialBonus(new InitialBonus(0, 0.2m));
-            Debug.Log("+20% ATK (InitialBonus).");
-        }
-        if (Input.GetKeyDown(KeyCode.E)) // E
-        {
-            _playerAtk.AddFinalBonus(new FinalBonus(100, 0m));
-            Debug.Log("+100 ATK (FinalBonus).");
-        }
-        if (Input.GetKeyDown(KeyCode.R)) // R
-        {
-            _playerAtk.AddFinalBonus(new FinalBonus(0, 0.2m));
-            Debug.Log("+20% ATK (FinalBonus).");
-        }
-        if (Input.GetKeyDown(KeyCode.A)) // A
-        {
-            _playerAtk.RemoveInitialBonus(new InitialBonus(100, 0));
-            Debug.Log("Removed a +100 ATK (InitialBonus) bonus(Leaf), if there was any.");
-        }
-        if (Input.GetKeyDown(KeyCode.S)) // S
-        {
-            _playerAtk.RemoveInitialBonus(new InitialBonus(0, 0.2m));
-            Debug.Log("Removed a +20% ATK (InitialBonus) bonus(Leaf), if there was any.");
-        }
-        if (Input.GetKeyDown(KeyCode.D)) // D
-        {
-            _playerAtk.RemoveFinalBonus(new FinalBonus(100, 0));
-            Debug.Log("Removed a +100 ATK (FinalBonus) bonus(Leaf), if there was any.");
-        }
-        if (Input.GetKeyDown(KeyCode.F)) // F
-        {
-            _playerAtk.RemoveFinalBonus(new FinalBonus(0, 0.2m));
-            Debug.Log("Removed a +20% ATK (FinalBonus) bonus(Leaf), if there was any.");
-        }
+
+        PlayerCommands();
+        SwordCommands();
     }
 }
