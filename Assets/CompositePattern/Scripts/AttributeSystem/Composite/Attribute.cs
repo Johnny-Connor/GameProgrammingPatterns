@@ -26,16 +26,12 @@ public class Attribute : BaseAttribute
 
     public void RemoveBaseAttribute(BaseAttribute baseAttribute)
     {
-        foreach (BaseAttribute i in _baseAttributes)
-        {
-            if (baseAttribute.GetValue() == i.GetValue())
-            {
-                baseAttribute = i;
-                break;
-            }
-        }
-
         _baseAttributes.Remove(baseAttribute);
+    }
+
+    public bool ContainsBaseAttribute(BaseAttribute baseAttribute)
+    {
+        return _baseAttributes.Contains(baseAttribute);
     }
 
     public override int GetValue()

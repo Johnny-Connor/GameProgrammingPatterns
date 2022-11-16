@@ -10,8 +10,6 @@ public class AttributeSystemControls : MonoBehaviour
     private Bonus _magicalLeafAtkBonus = new Bonus(1);
     private Bonus _refinementAtkBonus = new Bonus(5);
 
-    private bool _isSwordEquipped;
-
     private void Update()
     {
         void PlayerCommands()
@@ -23,7 +21,7 @@ public class AttributeSystemControls : MonoBehaviour
     
             if (Input.GetMouseButtonDown(2)) // M3
             {
-                if (_isSwordEquipped)
+                if (_playerAtk.ContainsBaseAttribute(_swordAtk))
                 {
                     _playerAtk.RemoveBaseAttribute(_swordAtk);
                     Debug.Log("Player has unequipped Sword.");
@@ -33,8 +31,6 @@ public class AttributeSystemControls : MonoBehaviour
                     _playerAtk.AddBaseAttribute(_swordAtk);
                     Debug.Log("Player has equipped Sword.");
                 }
-
-                _isSwordEquipped = !_isSwordEquipped;
             }
 
             if (Input.GetKeyDown(KeyCode.Q)) // Q
