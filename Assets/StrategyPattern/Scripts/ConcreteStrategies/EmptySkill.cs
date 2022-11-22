@@ -1,4 +1,5 @@
-using UnityEngine; // Using for Debug.Log.
+// Using for Debug.Log.
+using UnityEngine;
 
 public class EmptySkill : ISkill
 {
