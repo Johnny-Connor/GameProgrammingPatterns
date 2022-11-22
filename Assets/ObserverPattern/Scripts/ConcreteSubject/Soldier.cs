@@ -2,14 +2,14 @@
 using System;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Soldier : MonoBehaviour
 {
     /*
     Note 1: declaring the event as static to prevent observers from being too coupled to
     their subjects.
     Note 2: it's a good practice to name events with an On prefix.
     */
-    public static event Action OnPlayerShoot;
+    public static event Action OnSoldierShoot;
 
     private void Update()
     {
@@ -21,16 +21,16 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Player fired his gun.");
+        Debug.Log("Soldier fired his gun.");
         /*
-        Checking if OnPlayerShot has any subscribers (not null), as triggering it without
+        Checking if OnSoldierShoot has any subscribers (not null), as triggering it without
         any causes a NullReferenceException error.
         Note: This is a compact way of writing:
-        if (OnPlayerShoot != null)
+        if (OnSoldierShoot != null)
         {
-            OnPlayerShoot.Invoke();
+            OnSoldierShoot.Invoke();
         }
         */
-        OnPlayerShoot?.Invoke();
+        OnSoldierShoot?.Invoke();
     }
 }

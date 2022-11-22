@@ -5,17 +5,17 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         // Subscribing to event.
-        Player.OnPlayerShoot += NoticePlayer;
+        Soldier.OnSoldierShoot += NoticeSoldier;
     }
 
     private void OnDisable()
     {
         // Unsubscribing from event.
-        Player.OnPlayerShoot -= NoticePlayer;
+        Soldier.OnSoldierShoot -= NoticeSoldier;
     }
 
-    private void NoticePlayer()
+    private void NoticeSoldier()
     {
-        Debug.Log("The Enemy has noticed the Player.");
+        Debug.Log("The Enemy has noticed the Soldier.");
     }
 }
