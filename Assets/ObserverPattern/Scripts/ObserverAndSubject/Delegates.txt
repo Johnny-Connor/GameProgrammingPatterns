@@ -1,0 +1,17 @@
+Using delegates instead of interfaces is often the most efficient way to implement the observer design pattern. Stack Overflow users incisively compare both methods at https://stackoverflow.com/questions/550785/c-events-or-an-observer-interface-pros-cons. There, Scott Langham presents some of the main points:
+"
+Only hook events you need
+With events, you only need to implement handlers for events you're interested in handling. In the observer interface pattern, you'd have to implement all methods in the entire interface including implementing method bodies for notification types you don't actually care about handling. In your example, you always have to implement OnFoundDirectory and OnFoundFile, even if you only care about one of these events.
+
+Less maintenance
+Another good thing about events is you can add a new one to a particular class so that it will raise it, and you don't have to change every existing observer. Whereas if you want to add a new method to an interface, you have to go around every class that already implements that interface and implement the new method in all of them. With an event though, you only need to alter existing classes that actually want to do something in response to the new event you're adding.
+
+The pattern is built into the language so everybody knows how to use it
+Events are idiomatic, in that when you see an event, you know how to use it. With an observer interface, people often implement different ways of registering to receive notifications and hook up the observer.. with events though, once you've learnt how to register and use one (with the += operator), the rest are all the same.
+
+Pros for interfaces
+I haven't got many pros for interfaces. I guess they force someone to implement all methods in the interface. But, you can't really force somebody to implement all those methods correctly, so I don't think there's a lot of value on this.
+
+Syntax
+Some people don't like the way you have to declare a delegate type for each event. Also, standard event handlers in the .NET framework have these parameters: (object sender, EventArgs args). As sender doesn't specify a particular type, you have to down-cast if you want to use it. This often is fine in practice, it feels not quite right though because you're losing the protection of the static type system. But, if you implement your own events and don't follow the .NET framework convention on this, you can use the correct type so potential down-casting isn't required.
+"
