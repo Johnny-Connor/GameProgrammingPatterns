@@ -1,4 +1,4 @@
-Using delegates instead of interfaces is often the most efficient way to implement the observer design pattern. Stack Overflow users incisively compare both methods at https://stackoverflow.com/questions/550785/c-events-or-an-observer-interface-pros-cons. There, Scott Langham presents some of the main points:
+Using delegates instead of interfaces is often the most efficient way to implement the observer design pattern. Stack Overflow users compared both methods incisively at https://stackoverflow.com/questions/550785/c-events-or-an-observer-interface-pros-cons. There, Scott Langham presents some of the main points:
 "
 Only hook events you need
 With events, you only need to implement handlers for events you're interested in handling. In the observer interface pattern, you'd have to implement all methods in the entire interface including implementing method bodies for notification types you don't actually care about handling. In your example, you always have to implement OnFoundDirectory and OnFoundFile, even if you only care about one of these events.
