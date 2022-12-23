@@ -2,42 +2,35 @@ using UnityEngine;
 
 public class ClickCounter : MonoBehaviour
 {
-    /*
-    This variable will store the first instance of this class. Making it public and static
-    makes this class accessible from anywhere.
-    Warning: This is where potential dependencies (on the singleton) can be introduced.
-    */
-    public static ClickCounter instance;
+    private static ClickCounter _instance;
     /*
     Warning: This is where the single-responsibility principle is violated, as now this
-    class will be responsible for enforcing its uniqueness and registering the number of
-    clicks.
+    class will be responsible both for enforcing its uniqueness and registering the number
+    of clicks.
     */
-    public int totalClicks;
+    private int _clicks;
 
     /*
     This private constructor prevents further instances from being created after the
-    InstanceCheck in Awake.
+    InstanceCheck method in Awake.
     */
-    private ClickCounter()
-    {
-    }
+    private ClickCounter(){}
 
     private void Awake()
     {
         void InstanceCheck()
         {
             // If no instances were previously registered...
-            if (instance == null)
+            if (_instance == null)
             {
                 /*
                 ...register this instance and don't destroy the gameObject it's attached to
                 on load.
                 */
-                instance = this;
+                _instance = this;
                 DontDestroyOnLoad(gameObject);
             }
-            else if (instance != this)
+            else if (_instance != this)
             {
                 Destroy(gameObject);
             }
@@ -52,10 +45,18 @@ public class ClickCounter : MonoBehaviour
         {
             void Increment()
             {
-                totalClicks++;                
+                _clicks++;                
             }
 
             Increment();
         }
+    }
+
+    /*
+    Warning: This is where potential dependencies on the singleton can be introduced.
+    */
+    public static int GetClicks()
+    {
+        return _instance._clicks;
     }
 }
