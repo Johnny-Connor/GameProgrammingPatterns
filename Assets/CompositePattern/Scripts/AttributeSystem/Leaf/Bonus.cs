@@ -6,7 +6,5 @@ public class Bonus : BaseAttribute
     Note: the override keyword isn't used because inherited constructors are automatically
     overridden.
     */
-    public Bonus(int baseValue) : base(baseValue)
-    {
-    }
+    public Bonus(int baseValue) : base(baseValue){}
 }
