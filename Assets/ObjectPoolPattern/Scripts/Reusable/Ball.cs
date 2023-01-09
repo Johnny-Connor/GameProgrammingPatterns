@@ -59,7 +59,7 @@ public class Ball : MonoBehaviour
 
     /*
     Sets the reference of the _ballPool from this class. This makes it possible for this
-    instance to manipulate the pool it's part of.
+    instance to manipulate the pool it is part of.
     */
     public void SetPool(IObjectPool<Ball> pool)
     {

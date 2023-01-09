@@ -4,7 +4,8 @@ public class LocomotionControls : MonoBehaviour
 {
     LocomotionStateMachine _locomotionStateMachine;
 
-    private void Start() {
+    private void Start()
+    {
         _locomotionStateMachine = GetComponent<LocomotionStateMachine>();
     }
 

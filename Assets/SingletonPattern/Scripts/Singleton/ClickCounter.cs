@@ -5,12 +5,13 @@ Q - Where is the private constructor from the UML diagram?
 A - The purpose of the private constructor is to prevent further instances from being
 created after the code starts executing. In Unity, however, a newly loaded scene may already
 contain a running singleton instance, rendering the constructor useless. To resolve this, an
-instance check inside the Awake method excludes duplicate instances.
+instance check inside the Awake method is used to exclude duplicate instances whenever they
+are created.
 
 Q - Where is the static instance property from the UML diagram?
 A - Usually, the static instance property is used for lazy instantiating a singleton. In
 Unity, however, due to its scene-oriented architecture, unless the user wants to instantiate
-a singleton specifically during a scene, this is unnecessary. Instead, it's simpler to make
+a singleton specifically during a scene, this is unnecessary. Instead, it is simpler to make
 every property of the singleton static instead.
 */
 using UnityEngine;
@@ -45,7 +46,7 @@ public class ClickCounter : MonoBehaviour
             }
             else if (_instance != this)
             {
-                // Destroys GameObjects containing a ClickCounter script if they're created. 
+                // Destroys the GameObject containing this script.
                 Destroy(gameObject);
             }
         }

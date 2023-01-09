@@ -1,2 +1,2 @@
-While it's possible to create a ReusablePool class from scratch, there's no advantage in doing so over using algorithms which have already solved this problem.
+While it is possible to create a ReusablePool class from scratch, there is no advantage in doing so over using algorithms that have already solved this problem.
 Resources from the UnityEngine.Pool library will be used to manage the pools from this example.

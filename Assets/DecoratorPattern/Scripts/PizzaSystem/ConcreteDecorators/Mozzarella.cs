@@ -5,7 +5,7 @@ public class Mozzarella : PizzaDecorator
 {
     /*
     The base keyword is used to override a functionality while still maintaining it.
-    Note: the override keyword isn't used because inherited constructors are automatically
+    Note: the override keyword is not used because inherited constructors are automatically
     overridden.
     */
     public Mozzarella(IPizza newPizza) : base(newPizza)

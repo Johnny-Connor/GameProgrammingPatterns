@@ -17,7 +17,7 @@ public class SoldierShotsCounter : MonoBehaviour
     }
 
     /*
-    Note: it's a good practice to name subscription function/methods using the
+    Note: it is a good practice to name subscription function/methods using the
     class_event format.
     */
     private void Soldier_OnSoldierShoot()

@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class LocomotionStateMachine : MonoBehaviour, ILocomotionContext
 {
-    private ILocomotionState _currentState = new IdleState(); // Starting state.
+    // IdleState will be the starting state.
+    private ILocomotionState _currentState = new IdleState();
 
     private void Awake() => _currentState.OnEnter();
 
@@ -13,10 +14,10 @@ public class LocomotionStateMachine : MonoBehaviour, ILocomotionContext
     public void Stop() => _currentState.Stop(this);
 
     /*
-    Since ideally, .SetState should only be used by objects of type ILocomotionState, the
-    use of an Explicit Interface Implementation is recommended. This way, .SetState will
-    only be available if the interface it belongs to is mentioned, preventing classes which
-    have access to an LocomotionStateMachine from calling .SetState by accident.
+    Since ideally, SetState should only be used by objects of type ILocomotionState, the
+    use of an Explicit Interface Implementation is recommended. This way, SetState will
+    only be available if the interface it belongs to is mentioned, preventing classes that
+    have access to an LocomotionStateMachine from calling SetState by accident.
     */
     void ILocomotionContext.SetState(ILocomotionState newState)
     {

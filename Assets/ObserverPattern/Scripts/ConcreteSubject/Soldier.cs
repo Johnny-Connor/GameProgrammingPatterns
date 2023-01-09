@@ -7,7 +7,7 @@ public class Soldier : MonoBehaviour
     /*
     Note 1: declaring the event as static to prevent observers from being too coupled to
     their subjects.
-    Note 2: it's a good practice to name events with an On prefix.
+    Note 2: it is a good practice to name events with an On prefix.
     */
     public static event Action OnSoldierShoot;
 

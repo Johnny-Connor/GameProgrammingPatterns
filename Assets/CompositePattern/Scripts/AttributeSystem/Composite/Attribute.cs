@@ -1,11 +1,11 @@
 /*
-Using for List<T>, a class which provides many methods to search, sort, and manipulate lists
+Using for List<T>, a class that provides many methods to search, sort, and manipulate lists
 of any type (Generics).
 */
 using System.Collections.Generic;
 
 /*
-The Attribute class (Composite) is a node which can group bonuses (Leaves) and other
+The Attribute class (Composite) is a node that can group bonuses (Leaves) and other
 attributes. This makes it possible, for example, to manage the bonuses a buff/potion/
 weapon will have, as well as manage these same items when they are being used by another
 item.

@@ -37,7 +37,7 @@ public class BallLauncher : MonoBehaviour
 
         /*
         The constructor of the ObjectPool class has several parameters, with most of them
-        being delegates which are called when certain ObjectPool<T0> methods are used.
+        being delegates that are called when certain ObjectPool<T0> methods are used.
         The list of these parameters, alongside their respective explanations, is available
         at:
         https://docs.unity3d.com/ScriptReference/Pool.ObjectPool_1-ctor.html
