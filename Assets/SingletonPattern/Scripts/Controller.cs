@@ -14,7 +14,7 @@ public class Controller : MonoBehaviour
 
         void ShowClickCount()
         {
-            Debug.Log("Click count: " + ClickCounter.GetClicks() + ".");
+            Debug.Log("Click count: " + ClickCounter.GetInstance().GetClicks() + ".");
         }
 
         if (Input.GetMouseButtonDown(1)) // M2

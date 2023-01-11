@@ -8,11 +8,20 @@ contain a running singleton instance, rendering the constructor useless. To reso
 instance check inside the Awake method is used to exclude duplicate instances whenever they
 are created.
 
-Q - Where is the static instance property from the UML diagram?
-A - Usually, the static instance property is used for lazy instantiating a singleton. In
-Unity, however, due to its scene-oriented architecture, unless the user wants to instantiate
-a singleton specifically during a scene, this is unnecessary. Instead, it is simpler to make
-every property of the singleton static instead.
+Q - Is is not simpler to make all singleton methods public static instead of using a static
+GetInstance property? In this way, other scripts will be able to communicate with this
+singleton with less typing (e.g: ClickCounter.GetClicks(), as opposed to 
+ClickCounter.GetInstance().GetClicks()).
+A - There are two main reasons why the singleton instance is worth referring to in other
+scripts.
+1. Abstraction: it makes sense to access the data of a singleton by accessing its only
+existing instance first. Besides, seeing the instance reference will remind the user that the
+class being accessed is a singleton.
+2. Lazy instantiation: While in Unity, due to its scene-oriented architecture, lazy
+instantiating a singleton is often unnecessary (unless the user wants to instantiate a
+singleton specifically during a scene), this tactic is widely used outside of this game
+engine, which means that using this design will improve the readability of the code for
+outsiders.
 */
 using UnityEngine;
 
@@ -21,6 +30,11 @@ public class ClickCounter : MonoBehaviour
     // Each ClickCounter instance will share the same _instance value.
     private static ClickCounter _instance;
     
+    public static ClickCounter GetInstance()
+    {
+        return _instance;
+    }
+
     /*
     Warning: This is where the single-responsibility principle is violated, as now this
     class will be responsible both for enforcing its uniqueness and registering the number
@@ -29,7 +43,7 @@ public class ClickCounter : MonoBehaviour
     private int _clicks;
 
     // Warning: This is where potential dependencies on the singleton can be introduced.
-    public static int GetClicks()
+    public int GetClicks()
     {
         return _instance._clicks;
     }
