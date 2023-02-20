@@ -1,19 +1,19 @@
 using UnityEngine;
 
-public class SoldierShotsCounter : MonoBehaviour
+public class Gun : MonoBehaviour
 {
-    private int _SoldierShotsCount;
+    [SerializeField] private Soldier _soldier;
 
     private void OnEnable()
     {
         // Subscribing to event.
-        Soldier.OnSoldierShoot += Soldier_OnSoldierShoot;
+        _soldier.OnSoldierShoot += Soldier_OnSoldierShoot;
     }
 
     private void OnDisable()
     {
         // Unsubscribing from event.
-        Soldier.OnSoldierShoot -= Soldier_OnSoldierShoot;
+        _soldier.OnSoldierShoot -= Soldier_OnSoldierShoot;
     }
 
     /*
@@ -22,7 +22,6 @@ public class SoldierShotsCounter : MonoBehaviour
     */
     private void Soldier_OnSoldierShoot()
     {
-        _SoldierShotsCount++;
-        Debug.Log("Soldier shots count: " + _SoldierShotsCount + ".");
+        Debug.Log("Playing imaginary Gun animation.");
     }
 }
