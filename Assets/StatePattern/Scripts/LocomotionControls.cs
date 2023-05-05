@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class LocomotionControls : MonoBehaviour
 {
-    LocomotionStateMachine _locomotionStateMachine;
+    private LocomotionStateMachine _locomotionStateMachine;
 
-    private void Start()
-    {
-        _locomotionStateMachine = GetComponent<LocomotionStateMachine>();
-    }
+    private void Awake() => _locomotionStateMachine = new LocomotionStateMachine(new WalkState());
 
     private void Update()
     {
+        _locomotionStateMachine.Tick();
+
         if (Input.GetMouseButtonDown(0)) // M1
         {
             _locomotionStateMachine.Move();

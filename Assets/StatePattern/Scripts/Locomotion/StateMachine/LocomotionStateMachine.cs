@@ -1,17 +1,24 @@
-using UnityEngine;
-
-public class LocomotionStateMachine : MonoBehaviour, ILocomotionContext
+public class LocomotionStateMachine : ILocomotionContext
 {
-    // IdleState will be the starting state.
-    private ILocomotionState _currentState = new IdleState();
+    private ILocomotionState _currentState;
 
-    private void Awake() => _currentState.OnEnter();
+    // Sets _currentstate as startingstate and calls its OnEnter method.
+    public LocomotionStateMachine(ILocomotionState startingState)
+    {
+        _currentState = startingState;
+        _currentState.OnEnter();
+    }
 
-    private void Update() => _currentState.OnTick();
-
-    public void Move() => _currentState.Move(this);
-
-    public void Stop() => _currentState.Stop(this);
+    /*
+    These are the actions that the locomotion state machine allows its users to perform:
+    - Tick: Updates the algorithm of the current state. Often called in
+    MonoBehaviour.Update().
+    - Move: Moves the imaginary character.
+    - Stop: Stops the imaginary character.
+    */
+    public void Tick() => _currentState.OnTick();
+    public void Move() => _currentState.OnMove(this);
+    public void Stop() => _currentState.OnStop(this);
 
     /*
     Since ideally, SetState should only be used by objects of type ILocomotionState, the

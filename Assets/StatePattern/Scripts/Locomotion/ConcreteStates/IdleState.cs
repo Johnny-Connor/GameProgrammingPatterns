@@ -5,22 +5,22 @@ public class IdleState : ILocomotionState
 {
     public void OnEnter()
     {
-        Debug.Log("Entered " + this + ".");        
+        Debug.Log("Entered in " + this + ".");        
     }
 
     public void OnTick()
     {
-        Debug.Log("A tick from " + this + ".");
+        Debug.Log("Performed Tick in " + this + ".");
     }
 
-    public void Move(ILocomotionContext context)
+    public void OnMove(ILocomotionContext context)
     {
-        Debug.Log("Called Move in " + this + ".");
+        Debug.Log("Performed Move in " + this + ".");
         context.SetState(new WalkState());        
     }
 
-    public void Stop(ILocomotionContext context)
+    public void OnStop(ILocomotionContext context)
     {
-        Debug.Log("Called Stop in " + this + ".");
+        Debug.Log("Performed Stop in " + this + ".");
     }
 }
